@@ -22,7 +22,7 @@ sys.path.append(os.path.join(ROOT_DIR, 'utils'))
 from utils.eval_det import eval_det_multiprocessing, get_iou_obb
 from utils.nms import nms_2d_faster, nms_3d_faster, nms_3d_faster_samecls
 from utils.box_util import get_3d_box, box3d_iou
-from sunrgbd.sunrgbd_utils import extract_pc_in_box3d
+from utils.extract_pc import extract_pc_in_box3d
 from utils.pc_util import random_sampling
 
 def flip_axis_to_camera(pc):
