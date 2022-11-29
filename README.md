@@ -65,7 +65,7 @@ sh run_pretrain.sh 0 results/pretrain scannet scannetv2_train_0.1.txt 4 3 0.1 0
 ```
 
 ## Training
-After pre-training or [downloading the checkpoint](# Download Pre-trained and Trained Models), you can train with script as follow.
+After pre-training or downloading the checkpoint, you can train with script as follow.
 ```
 sh run_train.sh <GPU_ID> <LOG_DIR> <DATASET> <LABELED_LIST> <PRETRAINED_DETECOR_CKPT> <PRETRAINED_AUGMENTOR_CKPT> <BATCH_SIZE> <BOX_NUM> <BOX_NUM_UNLABELED>
 ```
@@ -75,7 +75,7 @@ sh run_train.sh 0 results/train scannet scannetv2_train_0.1.txt results/pretrain
 ```
 
 ## Evaluation
-After training or [downloading the checkpoint](# Download_Pre-trained_and_Trained_Models), you can evaluate with script as follow.
+After training or downloading the checkpoint, you can evaluate with script as follow.
 ```
 sh run_eval.sh <GPU_ID> <LOG_DIR> <DATASET> <LABELED_LIST> <CKPT>
 ```
