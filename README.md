@@ -48,6 +48,12 @@ pip install -r requirements.txt
 ### ScanNet
 Please download the ScanNet data following the [README](https://github.com/nomiaro/OPA/blob/main/scannet/README.md) in scannet folder.
 
+## Download Pre-trained and Trained Models
+We provided the pre-trained models of ScanNet 10%:
+[detector](https://drive.google.com/file/d/1Nn3kIaIpA3LISA8ccuf6Sbg5vT0unljb/view?usp=sharing), [augmentor](https://drive.google.com/file/d/1S1zqB3Cr57TZGZVg7QlH11FODlxjhf1P/view?usp=sharing)
+We also provided the trained model of ScanNet 10%:
+[detectot](https://drive.google.com/file/d/1T_7WDrMFQKMLk5lP7gCj8QA8hR2JpZdO/view?usp=sharing)
+
 ## Pre-training
 Pre-train with script.
 ```
@@ -59,7 +65,7 @@ sh run_pretrain.sh 0 results/pretrain scannet scannetv2_train_0.1.txt 4 3 0.1 0
 ```
 
 ## Training
-Train with script.
+After pre-training or [downloading the checkpoint](# Download Pre-trained and Trained Models), you can train with script as follow.
 ```
 sh run_train.sh <GPU_ID> <LOG_DIR> <DATASET> <LABELED_LIST> <PRETRAINED_DETECOR_CKPT> <PRETRAINED_AUGMENTOR_CKPT> <BATCH_SIZE> <BOX_NUM> <BOX_NUM_UNLABELED>
 ```
@@ -69,7 +75,7 @@ sh run_train.sh 0 results/train scannet scannetv2_train_0.1.txt results/pretrain
 ```
 
 ## Evaluation
-Evaluate with script.
+After training or [downloading the checkpoint](# Download Pre-trained and Trained Models), you can evaluate with script as follow.
 ```
 sh run_eval.sh <GPU_ID> <LOG_DIR> <DATASET> <LABELED_LIST> <CKPT>
 ```
