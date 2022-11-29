@@ -50,7 +50,7 @@ Please download the ScanNet data following the [README](https://github.com/nomia
 
 ## Download Pre-trained and Trained Models
 We provided the pre-trained models of ScanNet 10%:
-[detector](https://drive.google.com/file/d/1Nn3kIaIpA3LISA8ccuf6Sbg5vT0unljb/view?usp=sharing), [augmentor](https://drive.google.com/file/d/1S1zqB3Cr57TZGZVg7QlH11FODlxjhf1P/view?usp=sharing)
+[detector](https://drive.google.com/file/d/1Nn3kIaIpA3LISA8ccuf6Sbg5vT0unljb/view?usp=sharing), [augmentor](https://drive.google.com/file/d/1S1zqB3Cr57TZGZVg7QlH11FODlxjhf1P/view?usp=sharing)  
 We also provided the trained model of ScanNet 10%:
 [detectot](https://drive.google.com/file/d/1T_7WDrMFQKMLk5lP7gCj8QA8hR2JpZdO/view?usp=sharing)
 
