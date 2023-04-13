@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This repository is the code release for our BMVC 2022 [paper](https://reurl.cc/3Y0bZ9).
+This repository is the code release for our BMVC 2022 [paper](https://arxiv.org/abs/2212.09273).
 
 In this repository, we provide an implementation (with Pytorch) based on [VoteNet](https://github.com/facebookresearch/votenet), [SESS](https://github.com/Na-Z/sess), [3DIoUMatch](https://github.com/THU17cyz/3DIoUMatch) and [PointAugment](https://github.com/liruihui/PointAugment) with some modification, as well as the training and evaluation scripts on ScanNet.
 
