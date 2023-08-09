@@ -92,7 +92,7 @@ def select_bboxes_pretrain(batch_data_label, dataset, box_num):
     return batch_obj_index, selected_bbox, sel_bbox_nums
 
 # Select bboxes in the SSL stage
-def select_bboxes_train(batch_data_label, dataset, box_num, box_num_unlabled, pred_bboxes, labeled_num):
+def select_bboxes_train(batch_data_label, dataset, box_num, box_num_unlabeled, pred_bboxes, labeled_num):
     batch_size_unlabeled = batch_data_label['point_clouds'].size()[0] - labeled_num
     
     batch_obj_index_labeled, selected_bbox_labeled, sel_bbox_nums_labeled = select_bboxes(batch_data_label,
@@ -103,7 +103,7 @@ def select_bboxes_train(batch_data_label, dataset, box_num, box_num_unlabled, pr
 
     batch_obj_index_unlabeled, selected_bbox_unlabeled, sel_bbox_nums_unlabeled = select_bboxes(batch_data_label,
                                                                                                 dataset,
-                                                                                                box_num_unlabled,
+                                                                                                box_num_unlabeled,
                                                                                                 batch_size_unlabeled,
                                                                                                 pred_bboxes,
                                                                                                 labeled=False,
@@ -248,7 +248,7 @@ def cal_aug_loss(end_points, loss, augLoss, Lambda, epoch, warm_up):
         return augLoss
 
 
-def get_pseudo_bboxess(batch_data_label, ema_end_points, config_dict, config, box_num_unlabled):
+def get_pseudo_bboxess(batch_data_label, ema_end_points, config_dict, config, box_num_unlabeled):
     # produce pseudo ground truth label
     supervised_mask = batch_data_label['supervised_mask']
     labeled_num = torch.nonzero(supervised_mask).squeeze(1).shape[0]
@@ -323,7 +323,7 @@ def get_pseudo_bboxess(batch_data_label, ema_end_points, config_dict, config, bo
         _cls = argmax_cls[idx]
         _cls = _cls[final_mask[idx]].cpu().detach().numpy()
 
-        if bbox_num >= 2*box_num_unlabled:
+        if bbox_num >= 2*box_num_unlabeled:
             boxes = np.zeros((bbox_num, 8))
             for ind in range(bbox_num):
                 boxes[ind, 0] = center[ind, 0] - _size[ind, 0]
@@ -335,8 +335,8 @@ def get_pseudo_bboxess(batch_data_label, ema_end_points, config_dict, config, bo
                 boxes[ind, 6] = iou_score[ind] * obj_score[ind]
                 boxes[ind, 7] = _cls[ind]
             pick = nms_3d_faster_samecls(boxes, config_dict['nms_iou'], config_dict['use_old_type_nms'])
-            center_np.append(center[pick[:2*box_num_unlabled]])
-            size_np.append(_size[pick[:2*box_num_unlabled]])
+            center_np.append(center[pick[:2*box_num_unlabeled]])
+            size_np.append(_size[pick[:2*box_num_unlabeled]])
         elif bbox_num == 0:
             center_np.append(np.array([]))
             size_np.append(np.array([]))
