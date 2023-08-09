@@ -81,7 +81,7 @@ parser.add_argument('--view_stats', action='store_true')
 parser.add_argument('--opt_rate', type=float, default=5e-4, help='Optimization rate for eval with opt')
 parser.add_argument('--opt_step', type=int, default=0, help='Optimization step for eval with opt')
 parser.add_argument('--box_num', type=int, default=3, help='num of sample boxes')
-parser.add_argument('--box_num_unlableed', type=int, default=3, help='num of sample boxes')
+parser.add_argument('--box_num_unlabled', type=int, default=3, help='num of sample boxes')
 parser.add_argument('--obj_points_num', type=int, default=1024, help='num of points to augment in the object')
 
 FLAGS = parser.parse_args()
@@ -390,7 +390,7 @@ def train_one_epoch(global_step):
                                          ema_end_points,
                                          CONFIG_DICT,
                                          DATASET_CONFIG,
-                                         FLAGS.box_num_unlableed)
+                                         FLAGS.box_num_unlabled)
 
         # start to prepare bboxes to augment
         labeled_num = torch.nonzero(batch_data_label['supervised_mask']).squeeze(1).shape[0]
@@ -398,7 +398,7 @@ def train_one_epoch(global_step):
         batch_obj_index, selected_bbox, sel_bbox_nums = select_bboxes_train(batch_data_label,
                                                                             FLAGS.dataset,
                                                                             FLAGS.box_num,
-                                                                            FLAGS.box_num_unlableed,
+                                                                            FLAGS.box_num_unlabled,
                                                                             pred_bboxes,
                                                                             labeled_num)
 
